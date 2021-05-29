@@ -1,0 +1,9 @@
+CREATE TABLE `pruebadeingreso`.`usuarios` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `nombre` VARCHAR(140) NOT NULL,
+    `apellido` VARCHAR(140) NOT NULL,
+    `documento` INT(12) NOT NULL,
+    `correo` VARCHAR(256) NOT NULL,
+    `telefono` INT(10) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
