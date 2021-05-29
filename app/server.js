@@ -1,6 +1,7 @@
 var express = require('express')
+var cors = require('cors')
 var app = express()
-
+app.use(cors());
 app.use(express.json())
 var db = require('./dbConnection');
 
@@ -12,6 +13,14 @@ app.get('/', function (req, res) {
 
 app.get('/usuarios', async function (req, res) {
     db.query('SELECT * FROM usuarios', (error, result) => {
+        if (error) res.status(500).send("fallo al listar");
+        res.send(result);
+    });
+})
+
+app.get('/usuario/:id', async function (req, res) {
+    const id = req.params.id;
+    db.query('SELECT * FROM usuarios WHERE id = ?', [id], (error, result) => {
         if (error) res.status(500).send("fallo al listar");
         res.send(result);
     });
